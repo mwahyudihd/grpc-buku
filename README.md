@@ -64,8 +64,39 @@ Create your first JPA entity
 [Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
 
 
-### REST
+### gRPC Server
 
-Easily start your REST Web Services
+This project implements a gRPC server using Quarkus for Backend Buku with CRUD operations and proxy functionality for clients.
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+#### Features
+
+- CRUD operations for books
+- gRPC server implementation
+- Client proxy support
+- Database integration with PostgreSQL
+- Hibernate ORM with Panache
+
+#### gRPC Service Definition
+
+The service is defined in `src/main/proto/buku.proto`. The service includes:
+- CreateBook
+- ReadBook
+- UpdateBook
+- DeleteBook
+- ListBooks
+
+#### API Documentation
+
+##### Book Service
+```protobuf
+service BookService {
+    rpc CreateBook (Book) returns (BookResponse);
+    rpc GetBook (BookId) returns (Book);
+    rpc UpdateBook (Book) returns (BookResponse);
+    rpc DeleteBook (BookId) returns (BookResponse);
+    rpc ListBooks (Empty) returns (BookList);
+}
+```
+
+For detailed implementation, check the source code in `src/main/kotlin/service/`.
+
