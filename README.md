@@ -100,3 +100,45 @@ service BookService {
 
 For detailed implementation, check the source code in `src/main/kotlin/service/`.
 
+## Running Project
+
+### Development Mode
+
+Run application in development mode:
+```shell script
+./mvnw compile quarkus:dev
+```
+or
+```shell script
+mvn compile quarkus:dev
+```
+
+The application will be available at:
+- gRPC: `localhost:50051`
+- Dev UI: `http://localhost:8080/q/dev/`
+- Proxy Rest: `http://localhost:8080/grpc-proxy/${service}/${method}`
+
+### Production Mode
+
+1. Build the application:
+```shell script
+./mvnw package
+```
+or
+```shell script
+mvn package
+```
+
+2. Run with Java:
+```shell script
+java -jar target/quarkus-app/quarkus-run.jar
+```
+
+Or build and run as native executable:
+```shell script
+./mvnw package -Dnative
+./target/grpc-buku-1.0.0-SNAPSHOT-runner
+```
+
+The application will be available at:
+- gRPC: `localhost:50051`
